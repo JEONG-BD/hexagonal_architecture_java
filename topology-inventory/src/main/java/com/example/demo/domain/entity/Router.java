@@ -4,13 +4,15 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import com.example.demo.domain.vo.Network;
 import com.example.demo.domain.vo.RouterId;
 import com.example.demo.domain.vo.RouterType;
 
 public class Router {
 
-    private final RouterType routerType;
-    private final RouterId routerId;
+    private RouterType routerType;
+    private RouterId routerId;
+    private Switch networkSwitch;
 
     public Router(RouterType routerType, RouterId routerId) {
         this.routerType = routerType;
@@ -47,6 +49,10 @@ public class Router {
                 "routerType=" + routerType +
                 ", routerId=" + routerId +
                 '}';
+    }
+
+    public List<Network> retrieveRouter() {
+        return networkSwitch.getNetworks();
     }
 
     
