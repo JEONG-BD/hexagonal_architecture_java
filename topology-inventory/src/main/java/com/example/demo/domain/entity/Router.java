@@ -1,8 +1,11 @@
-package com.example.demo.domain;
+package com.example.demo.domain.entity;
 
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+
+import com.example.demo.domain.vo.RouterId;
+import com.example.demo.domain.vo.RouterType;
 
 public class Router {
 
