@@ -4,58 +4,68 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import com.example.demo.domain.vo.IP;
 import com.example.demo.domain.vo.Network;
 import com.example.demo.domain.vo.RouterId;
 import com.example.demo.domain.vo.RouterType;
 
 public class Router {
 
-    private RouterType routerType;
-    private RouterId routerId;
+    private final RouterType routerType;
+    private final RouterId routerId;
     private Switch networkSwitch;
 
     public Router(RouterType routerType, RouterId routerId) {
         this.routerType = routerType;
         this.routerId = routerId;
-    } 
-
-        public static Predicate<Router> filterRouterByType(RouterType routerType){
-        return routerType.equals(RouterType.CORE)
-                ? isCore() :
-                isEdge();
     }
 
-    private static Predicate<Router> isCore(){
+    public Router(RouterType routerType, RouterId routerId, Switch networkSwitch) {
+        this.routerType = routerType;
+        this.routerId = routerId;
+        this.networkSwitch = networkSwitch;
+    }
+
+    public static Predicate<Router> filterRouterByType(RouterType routerType){
+        return routerType.equals(RouterType.CORE)
+                ? Router.isCore() :
+                Router.isEdge();
+    }
+
+    public static Predicate<Router> isCore(){
         return p -> p.getRouterType() == RouterType.CORE;
     }
 
-    private static Predicate<Router> isEdge(){
+    public static Predicate<Router> isEdge(){
         return p -> p.getRouterType() == RouterType.EDGE;
     }
 
-    public static List<Router> retrieveRouter(List<Router> routers, Predicate<Router> predicate){
-        return routers.stream()
-                .filter(predicate)
-                .collect(Collectors.<Router>toList());
+    public void addNetworkToSwitch(Network network){
+        this.networkSwitch = networkSwitch.add(network, this);
+    }
+
+    public Network createNetwork(IP address, String name, int cidr){
+        return new Network(address, name, cidr);
+    }
+
+    public List<Network> retrieveNetworks(){
+        return networkSwitch.getNetworks();
     }
 
     public RouterType getRouterType(){
         return routerType;
     }
 
+    public RouterId getRouterId() {
+        return routerId;
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return "Router{" +
                 "routerType=" + routerType +
                 ", routerId=" + routerId +
+                ", networkSwitch=" + networkSwitch +
                 '}';
     }
-
-    public List<Network> retrieveRouter() {
-        return networkSwitch.getNetworks();
-    }
-
-    
-
-    
 }
