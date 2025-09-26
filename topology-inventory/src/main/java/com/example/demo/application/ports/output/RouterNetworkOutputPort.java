@@ -5,7 +5,7 @@ import com.example.demo.domain.vo.RouterId;
 
 public interface RouterNetworkOutputPort {
 
-    Router fectchRouterId(RouterId routerId);
+    Router fetchRouterById(RouterId routerId);
 
     boolean persistRouter(Router router);
 }
