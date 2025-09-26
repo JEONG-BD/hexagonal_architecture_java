@@ -41,7 +41,7 @@ public class Router {
     }
 
     public void addNetworkToSwitch(Network network){
-        this.networkSwitch = networkSwitch.add(network, this);
+        this.networkSwitch = networkSwitch.addNetwork(network, this);
     }
 
     public Network createNetwork(IP address, String name, int cidr){

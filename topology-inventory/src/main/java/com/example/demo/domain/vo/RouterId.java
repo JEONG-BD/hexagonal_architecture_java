@@ -35,5 +35,8 @@ public class RouterId {
                 "id='" + id + '\'' +
                 '}';
     }
-        
+
+    public UUID getId() {
+        return id;
+    }
 }

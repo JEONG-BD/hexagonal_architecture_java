@@ -1,6 +1,6 @@
 package com.example.demo.domain.specification;
 
-public class AndSpecification<T> extends AbstractSpecification<T>{{
+public class AndSpecification<T> extends AbstractSpecification<T>{
     private Specification<T> spec1;
     private Specification<T> spec2;
 

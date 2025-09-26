@@ -1,5 +1,5 @@
 package com.example.demo.domain.vo;
 
-public class SwitchType {
-
+public enum SwitchType {
+    LAYER3
 }
