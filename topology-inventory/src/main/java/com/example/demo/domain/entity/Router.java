@@ -33,11 +33,11 @@ public class Router {
     }
 
     public static Predicate<Router> isCore(){
-        return p -> p.getRouterType() == RouterType.CORE;
+        return p -> p.getType() == RouterType.CORE;
     }
 
     public static Predicate<Router> isEdge(){
-        return p -> p.getRouterType() == RouterType.EDGE;
+        return p -> p.getType() == RouterType.EDGE;
     }
 
     public void addNetworkToSwitch(Network network){
@@ -52,12 +52,16 @@ public class Router {
         return networkSwitch.getNetworks();
     }
 
-    public RouterType getRouterType(){
+    public RouterType getType(){
         return routerType;
     }
 
-    public RouterId getRouterId() {
+    public RouterId getId() {
         return routerId;
+    }
+
+    public Switch getNetworkSwitch() {
+        return networkSwitch;
     }
 
     @Override

@@ -21,6 +21,14 @@ public class RouterId {
     //     return new RouterId(id);
     // }
 
+    public UUID getId() {
+        return id;
+    }
+
+    public UUID getUUID() {
+        return id;
+    }
+
     public static RouterId withId(String id) {
         return new RouterId(UUID.fromString(id));
     }
@@ -36,7 +44,5 @@ public class RouterId {
                 '}';
     }
 
-    public UUID getId() {
-        return id;
-    }
+
 }

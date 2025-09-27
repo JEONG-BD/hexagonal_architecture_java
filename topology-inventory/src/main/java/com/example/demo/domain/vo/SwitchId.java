@@ -13,9 +13,16 @@ public class SwitchId {
         return new SwitchId(UUID.fromString(id));
     }
 
-
     public static SwitchId withoutId(){
         return new SwitchId(UUID.randomUUID());
+    }
+
+    public UUID getUUID(){
+        return id;
+    }
+
+    public UUID getId() {
+        return id;
     }
 
     @Override

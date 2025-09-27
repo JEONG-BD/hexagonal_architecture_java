@@ -9,12 +9,13 @@ import com.example.demo.domain.vo.SwitchId;
 import com.example.demo.domain.vo.SwitchType;
 
 public class Switch {
-    private SwitchType switchType;
     private SwitchId switchId;
+    private SwitchType switchType;
+
     private List<Network> networks;
     private IP address;
 
-    public Switch (SwitchType switchType, SwitchId switchId, List<Network> networks, IP address){
+    public Switch ( SwitchId switchId, SwitchType switchType, List<Network> networks, IP address){
         this.switchType = switchType;
         this.switchId = switchId;
         this.networks = networks;
@@ -29,11 +30,23 @@ public class Switch {
         });
 
         newNetworks.add(network);
-        return new Switch(this.switchType, this.switchId, newNetworks, this.address);
+        return new Switch(this.switchId, this.switchType, newNetworks, this.address);
     }
 
     public List<Network> getNetworks() {
         return networks;
+    }
+
+    public SwitchId getSwitchId() {
+        return switchId;
+    }
+
+    public SwitchType getSwitchType() {
+        return switchType;
+    }
+
+    public IP getAddress() {
+        return address;
     }
 
     @Override

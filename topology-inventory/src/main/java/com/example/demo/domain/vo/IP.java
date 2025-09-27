@@ -4,7 +4,7 @@ public class IP {
     private String address;
     private Protocol protocol;
     
-    public IP(String address) {
+    private IP(String address) {
         if (address == null) {
             throw new IllegalArgumentException("Invalid IP address format");
         }
@@ -17,7 +17,11 @@ public class IP {
         }
     }
 
-    public String getAddress() {
+    public static IP fromAddress(String address) {
+        return new IP(address);
+    }
+
+    public String getIPAddress() {
         return address;
     }
 
